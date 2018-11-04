@@ -17,36 +17,73 @@ public class AhorcadoConJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner leer = new Scanner(System.in);
-        int vidas=5, longitud;
-        boolean intentos;
-        
-        String palabraAdivinar="Adivinas";
-        longitud = palabraAdivinar.length();
-        
-        char []letra;
-        letra = new char[longitud];
-        
-        for (int i=0;i<longitud; i++){
-            letra[i]='x';
+        Scanner s = new Scanner(System.in);
+        int vidas = 5, aciertos = 0, longitud, contador = 0;
+        String palabra , opcion;
+        palabra = "caspe";
+        char[] respuesta;
+        longitud = palabra.length();
+        respuesta = new char[longitud];
+
+        for (int i = 0; i <=longitud-1; i++) {
+            respuesta[i] = 'X';
+        }
+
+        while (aciertos != longitud && vidas != 0) {
+            System.out.println("Tienes "+vidas+ " Intentos");
+            pintarMuñeco(vidas);
+            System.out.println("");
+            for (int i = 0; i <=longitud-1; i++) {
+ 
+                System.out.print(respuesta[i]+"__");
+            }
+            System.out.println("");
+            System.out.println("Dime la letra : ");
+            opcion = s.next();
+            if (palabra.contains(opcion)) {
+                for (int i = 0; i <=longitud-1; i++) {
+                    if (palabra.charAt(i) == opcion.charAt(0)) {
+                        respuesta[i] = opcion.charAt(0);
+                        contador++;
+                    }
+                }
+ 
+                aciertos = aciertos + contador;
+            } 
+            else {
+                vidas--;
+            }
+ 
+            contador = 0;
         }
         
-        for(int i=0;i<longitud;i++){
-            System.out.println(palabraAdivinar.substring(i,i+1));
+        if(vidas==0){
+            pintarMuñeco(vidas);
         }
-        
-        while(vidas<0){
-            
+        else{
+            System.out.println("");
+            System.out.print("Puto amo.. la palabra es... '");
+            for (int i = 0; i <=longitud-1; i++) {
+ 
+                System.out.print(respuesta[i]);
+            }
+            System.out.print("'");
+            System.out.println("");
         }
     }
     
-    public static void PintaMuñeco(int fallos){
-        switch (fallos){
-            case 0:
+    public static void pintarMuñeco(int vidas){
+        switch (vidas){
+            case 4:
                 // Primer Intento
-                System.out.println("|___________________________________");
+                System.out.println(" ---------------------");
+                for (int j = 0; j < 15; j++) {
+                    System.out.println(" |");
+ 
+                }
+                System.out.println("__________");
                 break;
-            case 1:
+            case 3:
                 // Segundo Intento
                 System.out.println("|                                   ");
                 System.out.println("|                                   ");
@@ -68,27 +105,6 @@ public class AhorcadoConJava {
                 System.out.println("|___________________________________");
                 break;
             case 2:
-                // Tercer Intento
-                System.out.println("|----------------|                  ");
-                System.out.println("|                |                  ");
-                System.out.println("|                |                  ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|                                   ");
-                System.out.println("|___________________________________");
-                break;
-            case 3:
                 // Cuarto Intento
                 System.out.println("|----------------|                  ");
                 System.out.println("|                |                  ");
@@ -109,7 +125,7 @@ public class AhorcadoConJava {
                 System.out.println("|                                   ");
                 System.out.println("|___________________________________");
                 break;
-            case 4:
+            case 1:
                 // Quinto Intento
                 System.out.println("|----------------|                  ");
                 System.out.println("|                |                  ");
@@ -130,7 +146,7 @@ public class AhorcadoConJava {
                 System.out.println("|                    \\             ");
                 System.out.println("|___________________________________");
                 break;
-            case 5:
+            case 0:
                 // HAS PALMADO
                 System.out.println("|----------------|                  ");
                 System.out.println("|                |                  ");
@@ -150,6 +166,9 @@ public class AhorcadoConJava {
                 System.out.println("|             /     \\              ");
                 System.out.println("|            /       \\             ");
                 System.out.println("|___________________________________");
+		System.out.println("|___________________________________");
+		System.out.println("|___________________________________");
+		System.out.println("|____________HAS - PERDIDO__________");
                 break;
             default:
         }
