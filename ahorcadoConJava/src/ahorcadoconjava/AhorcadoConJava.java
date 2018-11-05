@@ -26,7 +26,7 @@ public class AhorcadoConJava {
         respuesta = new char[longitud];
 
         for (int i = 0; i <=longitud-1; i++) {
-            respuesta[i] = 'X';
+            respuesta[i] = 'x';
         }
 
         while (aciertos != longitud && vidas != 0) {
