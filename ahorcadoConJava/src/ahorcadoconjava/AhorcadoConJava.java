@@ -17,7 +17,7 @@ public class AhorcadoConJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        Scanner leer = new Scanner(System.in);
         int vidas = 5, aciertos = 0, longitud, contador = 0;
         String palabra , opcion;
         palabra = "caspe";
@@ -39,7 +39,7 @@ public class AhorcadoConJava {
             }
             System.out.println("");
             System.out.println("Dime la letra : ");
-            opcion = s.next();
+            opcion = leer.next();
             if (palabra.contains(opcion)) {
                 for (int i = 0; i <=longitud-1; i++) {
                     if (palabra.charAt(i) == opcion.charAt(0)) {
@@ -81,7 +81,7 @@ public class AhorcadoConJava {
                     System.out.println(" |");
  
                 }
-                System.out.println("__________");
+                System.out.println(" ---------------------");
                 break;
             case 3:
                 // Segundo Intento
